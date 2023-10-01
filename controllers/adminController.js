@@ -93,6 +93,23 @@ class adminController {
       }
     }
   };
+
+  static getAdminUserDetails = async (req, res) => {
+    try {
+      const user = await adminUserModel.findOne({ _id: req.body.userId });
+      if (!user) {
+        res.send({ message: "user not found" });
+      } else {
+        res.send({
+          success: true,
+          data: {fullName: user.fullName,email: user.email },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      res.send({ message: "auth error" });
+    }
+  };
 }
 
 export default adminController;

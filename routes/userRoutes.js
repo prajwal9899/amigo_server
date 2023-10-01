@@ -20,6 +20,9 @@ router.post("/getUserData", authMiddleware, userController.getUserDetails);
 router.get("/admin/getUsers", adminController.getUsers);
 router.post("/admin/login", adminController.adminUserLogin);
 router.post("/admin/register", adminController.adminUserRegistration);
+router.post("/admin/getAdminUserData", authMiddleware, adminController.getAdminUserDetails);
+
+
 
 
 
