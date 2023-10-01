@@ -5,7 +5,7 @@ import userRoutes from "./routes/userRoutes.js";
 import connectDB from "./config/connectDB.js";
 import mongoose from "mongoose";
 import userModel from "./models/userModel.js";
-import subsRoutes from './routes/subscription.js'
+// import subsRoutes from './routes/subscription.js'
 const app = express();
 
 // configure dot env
@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // configuring routes
 app.use("/api", userRoutes);
-app.use("/subs", subsRoutes);
+// app.use("/subs", subsRoutes);
 
 
 app.get('/',async (req,res) => {

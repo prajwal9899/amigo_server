@@ -41,6 +41,12 @@ const userSchema = new Schema({
     type: String,
     default: "user",
   },
+  subscriptionType: {
+    type: String,
+  },
+  subscriptionDate: {
+    type: String,
+  },
 });
 
 const userModel = mongoose.model("user", userSchema);

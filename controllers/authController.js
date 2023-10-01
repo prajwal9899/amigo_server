@@ -1,8 +1,8 @@
 import userModel from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { stripe } from "../utils/stripe.js";
-import User from "../models/subscribedUser.js";
+// import { stripe } from "../utils/stripe.js";
+// import User from "../models/subscribedUser.js";
 
 class authController {
   static userRegistration = async (req, res) => {
@@ -48,27 +48,29 @@ class authController {
             branchCode,
             branchAddress,
             password: hashPassword,
+            subscriptionDate: "",
+            subscriptionType : ""
           });
           await newUser.save();
 
           //! STRIPE REGISTRTION
 
-          const customer = await stripe.customers.create(
-            {
-              email,
-            },
-            {
-              apiKey: process.env.STRIPE_SECRET_KEY,
-            }
-          );
+          // const customer = await stripe.customers.create(
+          //   {
+          //     email,
+          //   },
+          //   {
+          //     apiKey: process.env.STRIPE_SECRET_KEY,
+          //   }
+          // );
 
-          const newUserStripe = await User.create({
-            email,
-            password: hashPassword,
-            stripeCustomerId: customer.id,
-          });
+          // const newUserStripe = await User.create({
+          //   email,
+          //   password: hashPassword,
+          //   stripeCustomerId: customer.id,
+          // });
 
-          const saved_user = await userModel.findOne({ email: email });
+          // const saved_user = await userModel.findOne({ email: email });
 
           res.status(201).send({
             status: "success",
