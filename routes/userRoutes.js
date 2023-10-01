@@ -21,6 +21,7 @@ router.get("/admin/getUsers", adminController.getUsers);
 router.post("/admin/login", adminController.adminUserLogin);
 router.post("/admin/register", adminController.adminUserRegistration);
 router.post("/admin/getAdminUserData", authMiddleware, adminController.getAdminUserDetails);
+router.patch("/admin/subscription", adminController.updateUserSubscriptions);
 
 
 

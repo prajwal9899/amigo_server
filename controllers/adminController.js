@@ -65,7 +65,6 @@ class adminController {
 
     const user = await adminUserModel.findOne({ email: email });
 
-
     if (user) {
       res.send({ status: "failed", message: "Email already exists" });
     } else {
@@ -76,7 +75,7 @@ class adminController {
           const newUser = adminUserModel({
             fullName,
             email,
-            password : hashPassword,
+            password: hashPassword,
           });
           await newUser.save();
 
@@ -102,13 +101,39 @@ class adminController {
       } else {
         res.send({
           success: true,
-          data: {fullName: user.fullName,email: user.email },
+          data: { fullName: user.fullName, email: user.email },
         });
       }
     } catch (error) {
       console.log(error);
       res.send({ message: "auth error" });
     }
+  };
+
+  static updateUserSubscriptions = async (req, res) => {
+    var userId = req.body.params.userId;
+    var isSubscription = req.body.params.isSubscription;
+    try {
+      const response = await userModel.updateOne(
+        { _id: userId },
+        {
+          $set: {
+            isSubscription: isSubscription,
+          },
+        }
+      );
+      if (response.modifiedCount) {
+        res.send({ success: true, response: res });
+      } else {
+        res.send({ success: false, response: res });
+      }
+    } catch (error) {
+      console.log(error);
+      res.send({ success: false, response: error });
+
+    }
+
+    // res.send({success: true,response: res})
   };
 }
 
