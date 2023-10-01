@@ -18,6 +18,9 @@ router.post("/getUserData", authMiddleware, userController.getUserDetails);
 
 // Admin routes
 router.get("/admin/getUsers", adminController.getUsers);
+router.post("/admin/login", adminController.adminUserLogin);
+router.post("/admin/register", adminController.adminUserRegistration);
+
 
 
 export default router;
