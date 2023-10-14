@@ -44,6 +44,9 @@ const userSchema = new Schema({
   subscriptionType: {
     type: String,
   },
+  subscriptionPeriod: {
+    type: String,
+  },
   subscriptionDate: {
     type: String,
   },

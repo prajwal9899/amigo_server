@@ -5,7 +5,7 @@ class userController {
   static getDefaulters = async (req, res) => {
     try {
       const data = defaulterModel
-        .find({Registration_No: req.query.Registration_No})
+        .find({ Registration_No: req.query.Registration_No })
         .exec()
         .then((data) => {
           res.json(data);
@@ -23,7 +23,7 @@ class userController {
       } else {
         res.send({
           success: true,
-          data: {fullName: user.fullName, registrationNo: user.registrationNo, email: user.email,role : user.role },
+          data: { fullName: user.fullName, registrationNo: user.registrationNo, email: user.email, role: user.role, subscriptionType: user.subscriptionType, subscriptionPeriod: user.subscriptionPeriod, subscriptionDate: user.subscriptionDate, isSubscription: user.isSubscription },
         });
       }
     } catch (error) {

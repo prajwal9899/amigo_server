@@ -48,8 +48,10 @@ class authController {
             branchCode,
             branchAddress,
             password: hashPassword,
-            subscriptionDate: "",
-            subscriptionType : ""
+            subscriptionDate: new Date().toISOString().split("T")[0],
+            subscriptionType: "Trial",
+            subscriptionPeriod: "30",
+            isSubscription: "Activated",
           });
           await newUser.save();
 

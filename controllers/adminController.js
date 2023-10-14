@@ -19,7 +19,6 @@ class adminController {
   };
 
   static adminUserLogin = async (req, res) => {
-    console.log("user");
     try {
       const { email, password } = req.body;
 
